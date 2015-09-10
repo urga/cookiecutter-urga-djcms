@@ -5,7 +5,7 @@
     "email": "Your email",
     "description": "A short description of the project.",
     "domain_name": "example.com",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "timezone": "CET",
     "now": "2015/09/10",
     "year": "{{ cookiecutter.now[:4] }}"
