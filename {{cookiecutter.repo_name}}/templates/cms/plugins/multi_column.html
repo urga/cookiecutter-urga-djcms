@@ -1,0 +1,6 @@
+{% load cms_tags %}
+<div class="row multicolumn{{ instance.num_children }}">
+{% for plugin in instance.child_plugin_instances %}
+  	{% render_plugin plugin %}
+{% endfor %}
+</div>

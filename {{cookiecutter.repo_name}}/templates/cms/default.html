@@ -1,0 +1,11 @@
+{% extends "cms/base.html" %}
+{% load cms_tags menu_tags staticfiles %}
+
+{% block bodyclass %}home{% endblock %}
+
+{% block main-content %}
+  <div class="container">
+    {% placeholder "hoofdinhoud" %}
+  </div>
+  <hr />
+{% endblock %}

@@ -13,6 +13,7 @@ Aims - should become 'features'
 * Based on django-cms_ 3.1
 * Renders Django projects with 100% test coverage
 * Twitter Bootstrap_ v4.0.0 - alpha_
+* Mandrill_ for sending mail
 * 12-Factor_ based settings via local .env file
 * Gulp build for generating css (using libsass) and optimize images
 * Media storage using Amazon S3/Google Storage
@@ -22,6 +23,7 @@ Aims - should become 'features'
 .. _django-cms: http://www.django-cms.org/en/
 .. _alpha: http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/
 .. _Bootstrap: https://github.com/twbs/bootstrap
+.. _Mandrill: http://www.mandrillapp.com
 .. _12-Factor: http://12factor.net/
 .. _Whitenoise: https://whitenoise.readthedocs.org/
 .. _docker-compose: https://www.github.com/docker/compose

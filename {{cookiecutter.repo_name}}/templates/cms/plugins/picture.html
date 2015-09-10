@@ -1,0 +1,3 @@
+{% if link %}<a href="{{ link }}">{% endif %}
+<img class="{% if picture.float %}pull-{{ picture.float }}{% endif %} {{ picture.style }}" alt="{{ picture.alt }}" src="{{ picture.image.url }}" width="{{ picture.image.width }}" height="{{ picture.image.height }}" />
+{% if link %}</a>{% endif %}

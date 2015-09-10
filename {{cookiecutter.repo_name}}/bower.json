@@ -1,0 +1,20 @@
+{
+  "name": "{{ cookiecutter.repo_name }}",
+  "version": "0.0.1",
+  "homepage": "http://{{ cookiecutter.domain_name }}",
+  "authors": [
+    "{{ cookiecutter.author_name }} <{{ cookiecutter.email }}>"
+  ],
+  "private": true,
+  "dependencies": {
+    "bootstrap": "#v4-dev",
+    "svgeezy": "~1.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

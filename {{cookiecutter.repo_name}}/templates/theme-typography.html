@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Typography{% endblock %}
+{% block pageclass %}typography{% endblock %}
+
+{% block typography-active %}active{% endblock %}
+
+{% block main-header %}
+<div class="container">
+  <div class="jumbotron">
+  <h1>Hello, universe!</h1>
+  <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+  <p><a href="#" class="btn btn-primary btn-large">Learn more »</a></p>
+</div>
+</div>
+{% endblock %}
+
+{% block main-content %}
+<div class="container">
+  <section class="services">
+    <header>
+      <h1>Our Services</h1>
+    </header>
+    <div class="row">
+      <div class="col-lg-4">
+        <article>
+          <h1>Heading</h1>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#">View details »</a></p>
+        </article>
+      </div>
+      <div class="col-lg-4">
+        <article>
+          <h1>Heading</h1>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#">View details »</a></p>
+       </article>
+      </div>
+      <div class="col-lg-4">
+        <article>
+          <h1>Heading</h1>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#">View details »</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <header>
+      <h1>Typography</h1>
+    </header>
+
+    <!-- Headings -->
+
+    <div class="row">
+      <div class="col-lg-4">
+        <article>
+          <div class="bs-component">
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+            <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <article>
+          <div class="bs-component">
+            <h1>Example body text</h1>
+            <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+            <p><small>This line of text is meant to be treated as fine print.</small></p>
+            <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+            <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+            <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <article>
+          <div class="bs-component">
+            <h1>Emphasis classes</h1>
+            <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+            <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+            <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+            <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </div>
+      </article>
+      </div>
+    </div>
+
+    <!-- Blockquotes -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 id="type-blockquotes">Blockquotes</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="bs-component">
+          <blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+          </blockquote>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="bs-component">
+          <blockquote class="pull-right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+
+// Trying to follow Harry Roberts' Inverse Triangle CSS.
+// Watch his presentation here: https://www.youtube.com/watch?v=1OKZOV-iLj4&hd=1
+// Slides are here: https://speakerdeck.com/dafed/managing-css-projects-with-itcss
+// This is not the way Bootstrap work, but I'm trying to make the best of it.
+
+// ---------------------------------
+// \        layer 1: Setttings     /
+//  \          layer2: Tools      /
+//   \      layer 3: Generic     /
+//    \     layer 4: Base       /
+//     \   layer 5: Objects    /
+//      \ layer 6: Components /
+//       \  layer 7: Trumps  /
+//        \                 /
+//         \               /
+//          \             /
+//           \           /
+//            \         /
+//             \       /
+//              \     /
+
+@import "settings";
+@import "tools";
+// @import "generic";
+// @import "base";
+// @import "objects";
+// @import "components";
+// @import "trumps";
+

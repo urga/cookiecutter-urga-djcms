@@ -1,0 +1,18 @@
+postgres:
+  image: postgres:9.4
+  env_file: .env
+
+django:
+  build: eu.gcr.io/urga-001/{{cookiecutter.repo_name}}_django
+  links:
+    - postgres
+  env_file: .env
+
+pg_dump:
+  image: postgres:9.4
+  links:
+    - postgres
+  volumes:
+    - /data/{{cookiecutter.repo_name}}/postgres:/backup
+  command: /bin/bash -c 'while true; do echo "Starting pgdump..." && pg_dump -Fc -f /backup/production-`date +\%Y\%m\%d-\%Hh\%M\%z`.sqlc -h db -U postgres postgres; sleep 86400; done'
+  env_file: .env

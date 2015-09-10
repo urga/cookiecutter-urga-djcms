@@ -1,0 +1,83 @@
+{% load cms_tags i18n sekizai_tags staticfiles menu_tags %}<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>{% block title %}{{ cookiecutter.project_name }}{% endblock %}</title>
+  {% block meta-description %}{% endblock %}
+  <meta name="viewport" content="width=device-width">
+  <meta name="google-site-verification" content="zInT9fQUawTk-LUb9FU-7yRXCXpT3FWADQbSygRPHE4" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script>window.html5 || document.write('<script src="{% static 'bower_components/html5shiv/dist/html5shiv.min.js' %}"><\/script>');</script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script>window.respond || document.write('<script src="{% static 'bower_components/respond/dest/respond.min.js' %}"><\/script>');</script>
+  <![endif]-->
+
+  {% render_block "css" %}
+  {% block extra_head %}{% endblock %}
+
+</head>
+
+<body class="{% block bodyclass %}{% endblock %}" role="document">
+{% cms_toolbar %}
+<!--[if lt IE 8]>
+  <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+{% block toolbar %}{% endblock toolbar %}
+<header>
+  {% show_menu 0 0 %}
+  {% block pageheader %}
+  {% endblock %}
+</header>
+
+<main>
+  {% block main-content %}
+  {% endblock %}
+</main>
+
+<footer class="footer-page">
+
+  <div class="container">
+    {% block footer %}
+    {% endblock %}
+    <p class="text-center">&copy; Engico 2015</p>
+  </div>
+
+</footer>
+
+<script src="https://ode.jquery.com/jquery-2.1.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"><\/script>')</script>
+<script src="{% static 'bower_components/svgeezy/svgeezy.min.js' %}"></script>
+<script>
+svgeezy.init('nocheck', 'png');
+</script>
+{% render_block "js" %}
+{% block extrascript %}
+{% endblock %}
+{% if not debug %}
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-63701496-1','auto');ga('send','pageview');
+  </script>
+{% endif %}
+</body>
+</html>
+
+

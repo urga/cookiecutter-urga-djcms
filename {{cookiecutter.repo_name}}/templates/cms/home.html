@@ -1,0 +1,75 @@
+{% extends "cms/base.html" %}
+{% load cms_tags staticfiles menu_tags sekizai_tags projects_tags %}
+
+{% block bodyclass %}home{% endblock %}
+
+{% block pageheader %}
+<div class="jumboheader jumboheader-home">
+  <h1>Automation <span>|</span> Programming <span>|</span> Engineering</h1>
+  <p><a data-scroll href="#services" class="btn btn-default">Start</a></p>
+  <p><img src="{% static 'img/pijl.svg' %}" alt="Start"/></p>
+</div>
+{% endblock %}
+
+{% block main-content %}
+<div class="container">
+  <div class="text-lead text-center">
+    {% placeholder "intro" %}
+  </div>
+  <hr />
+</div>
+<section id="services">
+  <div class="container">
+    <h1>Diensten</h1>
+    {% show_menu_below_id "diensten" 0 100 100 100 "menu/diensten.html" %}
+    <p class="text-center"><a data-scroll href="#projects" class="btn btn-default">Volgende</a></p>
+    <p class="text-center"><img src="{% static 'img/pijl-blauw.svg' %}" alt="volgende" /></p>
+  </div>
+  <div class="bg-diensten">
+  </div>
+</section>
+<section class="inverse-section" id="projects">
+  <div class="container">
+    <h1>Referenties</h1>
+    {% show_latest_projects 3 %}
+    <p class="text-center"><a data-scroll href="#aboutus" class="btn btn-default">Volgende</a></p>
+    <p class="text-center"><img src="{% static 'img/pijl.svg' %}" alt="volgende" /></p>
+  </div>
+  <div class="bg-referenties">
+    {% placeholder "referenties" %}
+  </div>
+</section>
+<section id="aboutus">
+  <div class="container">
+    <h1>Over ons</h1>
+    {% placeholder "overons" %}
+    <p class="text-center"><a data-scroll href="#contact" class="btn btn-default">Volgende</a></p>
+    <p class="text-center"><img src="{% static 'img/pijl-blauw.svg' %}" alt="volgende" /></p>
+  </div>
+  <hr />
+</section>
+<section id="contact" class="bg-grey">
+  <div class="container">
+    <h1>Contacteer Ons</h1>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="text-center">
+          {% placeholder "contact" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% addtoblock "js" %}
+  <script src="{% static 'bower_components/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+  <script>
+  $(document).ready(function() {
+    smoothScroll.init({
+      easing: 'easeInOutCubic'
+    });
+  });
+  </script>
+  {% endaddtoblock %}
+{% endblock %}
+
+
