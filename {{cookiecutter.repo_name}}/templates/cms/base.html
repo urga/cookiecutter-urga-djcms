@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% raw %}{% extends "base.html" %}
 {% load cms_tags staticfiles menu_tags %}
 {% block meta-description %}<meta name="description" content="{% page_attribute "meta_description" %}">{% endblock %}
 
@@ -6,3 +6,4 @@
 {% block footer %}
 {% static_placeholder "footer" %}
 {% endblock %}
+{% endraw %}
