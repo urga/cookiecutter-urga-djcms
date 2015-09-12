@@ -1,5 +1,5 @@
 {% raw %}{% extends "cms/base.html" %}
-{% load cms_tags staticfiles menu_tags sekizai_tags projects_tags %}
+{% load cms_tags staticfiles menu_tags sekizai_tags %}
 
 {% block bodyclass %}home{% endblock %}
 
@@ -21,7 +21,6 @@
 <section id="services">
   <div class="container">
     <h1>Diensten</h1>
-    {% show_menu_below_id "diensten" 0 100 100 100 "menu/diensten.html" %}
     <p class="text-center"><a data-scroll href="#projects" class="btn btn-default">Volgende</a></p>
     <p class="text-center"><img src="{% static 'img/pijl-blauw.svg' %}" alt="volgende" /></p>
   </div>
@@ -31,7 +30,6 @@
 <section class="inverse-section" id="projects">
   <div class="container">
     <h1>Referenties</h1>
-    {% show_latest_projects 3 %}
     <p class="text-center"><a data-scroll href="#aboutus" class="btn btn-default">Volgende</a></p>
     <p class="text-center"><img src="{% static 'img/pijl.svg' %}" alt="volgende" /></p>
   </div>

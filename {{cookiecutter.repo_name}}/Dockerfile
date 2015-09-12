@@ -20,6 +20,4 @@ RUN pip install --no-cache -r requirements.txt
 # copy the current code
 ADD . /usr/src/app/
 
-RUN DJANGO_SECRET_KEY=justbuilding ./manage.py collectstatic --noinput
-
-CMD ["/usr/local/bin/gunicorn", "--access-logfile", "-", "--error-logfile", "-", "eddydewaele.wsgi", "-b", "0.0.0.0:8000"]
+CMD ["/usr/local/bin/gunicorn", "--access-logfile", "-", "--error-logfile", "-", "{% cookiecutter.repo_name %}.wsgi", "-b", "0.0.0.0:8000"]

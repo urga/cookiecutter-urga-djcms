@@ -66,7 +66,6 @@ MEDIA_ROOT = os.getenv("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, 'media'))
 
 
 DJANGO_APPS = (
-    'urga_admin_style',
     'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -112,16 +111,27 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.language.LanguageCookieMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'sekizai.context_processors.sekizai',
-    'cms.context_processors.cms_settings',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR, "templates"),
+        ],
+        'OPTIONS': {
+            'context_processors': (
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.i18n',
+                'django.template.context_processors.request',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',
+            ),
+        }
+    }
+]
 
 CMS_TEMPLATES = (
     ('cms/home.html', 'Home'),
