@@ -2,48 +2,39 @@
 'use strict';
 
 // #####################################################################################################################
-// #IMPORTS#
-var autoprefixer = require('gulp-autoprefixer');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var gulpif = require('gulp-if');
-var iconfont = require('gulp-iconfont');
-var iconfontCss = require('gulp-iconfont-css');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var minifyCss = require('gulp-minify-css');
-var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-
-var argv = require('minimist')(process.argv.slice(2));
-
-// #####################################################################################################################
 // #SETTINGS#
 var options = {
     debug: argv.debug
 };
-var PROJECT_ROOT = __dirname;
+var PROJECT_ROOT = __dirname + '/';
 var PROJECT_PATH = {
-    js: PROJECT_ROOT + 'assets/js',
+    js: PROJECT_ROOT + 'assets',
     sass: PROJECT_ROOT + 'assets/scss',
-    css: PROJECT_ROOT + 'static/css',
+    css: PROJECT_ROOT + 'assets/dist/css',
     icons: PROJECT_ROOT + 'assets/fonts'
 };
 
 var PROJECT_PATTERNS = {
     js: [
-        PROJECT_PATH.js + '/modules/*.js',
-        PROJECT_PATH.js + '/gulpfile.js',
-        '!' + PROJECT_PATH.js + '/modules/jquery.ui.*.js',
-        '!' + PROJECT_PATH.js + '/dist/*.js'
+        PROJECT_PATH.js + '/js/*.js',
     ],
     sass: [
         PROJECT_PATH.sass + '/**/*.{scss,sass}'
     ],
     icons: [
         PROJECT_PATH.icons + '/*.svg'
+    ]
+};
+
+
+/*
+ * Object keys are filenames of bundles that will be compiled
+ * from array of paths that are the value.
+ */
+var JS_BUNDLES = {
+    'bundle.plugins.min.js': [
+        PROJECT_PATH.js + '/bower_components/svgeezy/svgeezy.min.js',
+        PROJECT_PATH.js + '/js/plugins.js'
     ]
 };
 
@@ -99,6 +90,30 @@ gulp.task('lint:javascript', function () {
         })
         .pipe(jshint.reporter('jshint-stylish'));
 });
+
+Object.keys(JS_BUNDLES).forEach(function (bundleName) {
+    var bundleFiles = JS_BUNDLES[bundleName];
+
+    gulp.task('bundle:' + bundleName, function () {
+        return gulp.src(bundleFiles)
+            .pipe(gulpif(options.debug, sourcemaps.init()))
+            .pipe(uglify({
+                preserveComments: 'some',
+                compress: {
+                    drop_console: !options.debug,
+                    drop_debugger: !options.debug
+                }
+            }))
+            .pipe(concat(bundleName, {
+                newLine: '\n'
+            }))
+            .pipe(gulpif(options.debug, sourcemaps.write()))
+            .pipe(gulp.dest(PROJECT_PATH.js + '/dist/js/'));
+    });
+});
+gulp.task('bundle', Object.keys(JS_BUNDLES).map(function (bundleName) {
+    return 'bundle:' + bundleName;
+}));
 
 gulp.task('watch', function () {
     gulp.watch(PROJECT_PATTERNS.sass, ['sass']);

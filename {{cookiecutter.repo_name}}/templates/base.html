@@ -57,12 +57,8 @@
 
 </footer>
 
-<script src="https://ode.jquery.com/jquery-2.1.4.min.js"></script>
-<script>window.jQuery || document.write('<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"><\/script>')</script>
-<script src="{% static 'bower_components/svgeezy/svgeezy.min.js' %}"></script>
-<script>
-svgeezy.init('nocheck', 'png');
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src={% static 'js/bundle.plugins.min.js' %}></script>
 {% render_block "js" %}
 {% block extrascript %}
 {% endblock %}
