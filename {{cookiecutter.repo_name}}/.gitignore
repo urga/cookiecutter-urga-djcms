@@ -9,9 +9,8 @@
 *.tmPreferences.cache
 *.stTheme.cache
 
-# workspace and project files are user-specific
+# workspace files are user-specific
 *.sublime-workspace
-*.sublime-project
 
 # project files should be checked into the repository, unless a significant
 # proportion of contributors will probably not be using SublimeText
@@ -20,12 +19,45 @@
 # sftp configuration file
 sftp-config.json
 
-# Generated files
-*.log
-*.pot
+# Basics
+*.py[cod]
 *.pyc
+__pycache__
+
+# Logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+htmlcov
+
+# Translations
+*.mo
+*.pot
+
+# Pycharm
 .idea
 
-# Project Specific Stuff
-my_test_project/*
-.cache
+# Vim
+
+*~
+*.swp
+*.swo
+
+# npm
+node_modules/
+
+# Compass
+.sass-cache
+
+# virtual environments
+.env
+
+# User-uploaded media
+{{ cookiecutter.repo_name }}/media/
+
+# Hitch directory
+tests/.hitch

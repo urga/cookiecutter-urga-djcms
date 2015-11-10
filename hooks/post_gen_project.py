@@ -3,9 +3,7 @@
 
 from subprocess import call
 
-call(["mv", "dotgitignore", ".gitignore"])
-print("******* Installling node modules:")
-call(["npm", "install"])
-print("******* Node modules installed.")
-call("bower", "install")
-print("******* bower packages installed.")
+# print("******* Installling node modules:")
+# call(["npm", "install"])
+# print("******* Installing bower packages:")
+# call(["bower", "install"])
