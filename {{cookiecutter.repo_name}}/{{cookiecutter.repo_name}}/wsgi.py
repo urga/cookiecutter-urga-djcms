@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-WSGI config for {{cookiecutter.project_name}} project.
+WSGI config for johandesmet project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -16,12 +16,7 @@ framework.
 """
 
 import os
-
 from django.core.wsgi import get_wsgi_application
-# Whitenoise needs the setting, so before importing any whitenoise module:
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "eddydewaele.settings")
 
-from whitenoise.django import DjangoWhiteNoise
-
-
-application = DjangoWhiteNoise(get_wsgi_application())
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ cookiecutter.repo_name }}.settings")
+application = get_wsgi_application()

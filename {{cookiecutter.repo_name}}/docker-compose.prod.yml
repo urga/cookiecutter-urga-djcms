@@ -1,0 +1,19 @@
+# This file is for running the app in production and overwrites the common docker-compose.yml,
+# Use like this:
+
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+django:
+  image: eu.gcr.io/urga-001/johandesmet_web
+  env_file: .env.prod
+
+nginx:
+  build: eu.gcr.io/urga-001/johandesmet_nginx
+
+pg_dump:
+  image: postgres:9.4
+  links:
+    - postgres
+  volumes:
+    - /data/grivano/postgres:/backup
+  command: /bin/bash -c 'while true; do echo "Starting pgdump..." && pg_dump -Fc -f /backup/production-`date +\%Y\%m\%d-\%Hh\%M\%z`.sqlc -h postgres -U postgres postgres; sleep 86400; done'

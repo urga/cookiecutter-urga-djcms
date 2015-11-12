@@ -8,13 +8,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", False)
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", False) in ["True", "1", "yes", "true", "TRUE", "on", "ON", "On"]
@@ -37,7 +36,17 @@ MANAGERS = (
 )
 
 SITE_ID = 1
-DATABASES = {'default': dj_database_url.config()}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('POSTGRES_USER', "{{ cookiecutter.repo_name }}"),
+        'USER': os.getenv('POSTGRES_USER', "{{ cookiecutter.repo_name }}"),
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'HOST': 'postgres',  # docker-compose linked
+        'PORT': '',
+    },
+}
 
 # https://docs.djangoproject.com/en/stable/topics/i18n/
 LANGUAGE_CODE = 'nl'
@@ -50,19 +59,16 @@ TIME_ZONE = '{{ cookiecutter.timezone }}'
 USE_L10N = True
 
 # STORAGE
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID", None)
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY", None)
-AWS_STORAGE_BUCKET_NAME = '{{ cookiecutter.repo_name}}-media'
+AWS_STORAGE_BUCKET_NAME = '{{ cookiecutter.repo_name }}-public'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_HOST = "storage.googleapis.com"
 
-STATIC_URL = os.getenv("DJANGO_STATIC_URL", '/static/')
-STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "static"))
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-MEDIA_URL = os.getenv("DJANGO_MEDIA_URL", '/media/')
-MEDIA_ROOT = os.getenv("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, 'media'))
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATIC_URL = "https://{}/{}/".format(AWS_S3_HOST, AWS_STORAGE_BUCKET_NAME)
+STATICFILES_STORAGE = DEFAULT_FILE_STORAGE
+MEDIA_URL = STATIC_URL
 
 
 DJANGO_APPS = (
@@ -139,10 +145,8 @@ CMS_TEMPLATES = (
 )
 
 MIGRATION_MODULES = {
-    # Add also the following modules if you're using these plugins:
-    'djangocms_link': 'djangocms_link.migrations_django',
+    # Some modules have their migrations not in the migrations folder, due to using south in the past:
     'djangocms_picture': 'djangocms_picture.migrations_django',
-    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
     'djangocms_column': 'djangocms_column.migrations_django',
 }
 
@@ -184,3 +188,5 @@ COLUMN_WIDTH_CHOICES = (
     ('11', ("11/12e kolommen")),
     ('12', ("12/12e kolommen")),
 )
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False

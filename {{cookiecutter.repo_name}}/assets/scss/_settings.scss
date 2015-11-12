@@ -1,5 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-@import url(http://fonts.googleapis.com/css?family=Nunito:400,300);
+// Global variables, config switches
+
+// GRID
 
 // GENERAL
 $border-radius-base: 0px;
@@ -11,13 +12,6 @@ $font-size-base: 14px; //0.875em, em's dont' work because of later calculations.
 $line-height-base: 1.5;
 $type-scale-factor: 1.5;
 $line-height-computed: $line-height-base * $font-size-base;
-// $line-height-computed: floor(($base-font-size * $line-height-base));
-// $line-height-computed:    floor(($font-size-base * $line-height-base));
-// $line-height-computed: $font-size-base * $line-height-base;
-@debug 1.5 * 0.875em;
-// @debug $font-size-base * $line-height-base;
-// @debug $line-height-computed;
-
 
 // COLORS
 $brand-primary: #0066A1;
@@ -34,46 +28,8 @@ $text-color: $brand-secondary;
 $text-color-inverse: white;
 $text-muted: $brand-mute;
 
-$state-success-text:             $brand-success;
-// $state-success-bg:               #dff0d8 !default;
-// $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
-
-$state-info-text:                $brand-primary;
-// $state-info-bg:                  #d9edf7 !default;
-// $state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
-
-$state-warning-text:             $brand-warning;
-// $state-warning-bg:               #fcf8e3 !default;
-// $state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
-
-$state-danger-text:              $brand-danger;
-// $state-danger-bg:                #f2dede !default;
-// $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
-
 
 // BUTTONS
-$padding-base-vertical: 9.5px;
-$padding-base-horizontal: 18px;
-
-$btn-default-color: $brand-primary;
-$btn-default-bg: transparent;
-$btn-default-border: $brand-primary;
-
-$btn-primary-border: $brand-primary;
-$btn-success-border: $brand-success;
-$btn-info-border: $brand-primary;
-$btn-warning-border: $brand-warning;
-$btn-danger-border: $brand-danger;
-
-// NAVBAR
-$navbar-default-bg: transparent;
-$navbar-default-border: $brand-primary;
-$navbar-default-toggle-border-color: transparent;
-$navbar-default-link-hover-color: $brand-primary;
-$navbar-default-link-active-color: $brand-primary;
-
-@import '../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables';
-@debug $line-height-computed;
 
 
 // FORMS

@@ -2,7 +2,6 @@
 // Trying to follow Harry Roberts' Inverse Triangle CSS.
 // Watch his presentation here: https://www.youtube.com/watch?v=1OKZOV-iLj4&hd=1
 // Slides are here: https://speakerdeck.com/dafed/managing-css-projects-with-itcss
-// This is not the way Bootstrap work, but I'm trying to make the best of it.
 
 // ---------------------------------
 // \        layer 1: Setttings     /
@@ -20,11 +19,11 @@
 //             \       /
 //              \     /
 
-@import "settings";
-@import "tools";
-// @import "generic";
-// @import "base";
-// @import "objects";
-// @import "components";
-// @import "trumps";
+@import "settings"; // Global variables, config switches
+@import "tools"; // Default mixins and functions
+@import "generic"; // Ground-zero styles (Normalize.css, resets, box-sizing)
+// @import "base"; // Unclassed HTML elements (type selectors)
+// @import "objects"; // Cosmetic-free design patterns
+// @import "components"; // Designed components, chunks of UI
+// @import "trumps"; // Helpers and overrides
 
